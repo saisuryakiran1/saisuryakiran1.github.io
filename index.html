@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<!-- 
+  TheProFile — Default Layout
+  This is the primary wrapper for the application. It handles the injection of
+  head metadata, navigation, content, and global interaction scripts.
+-->
+<html lang="en" data-theme="dark" class="custom-cursor-active">
+  
+  <!-- 
+  TheProFile — Head Metadata
+  Handles SEO, Social Sharing (OG/Twitter), CSS variable injection, 
+  and FOUC prevention logic.
+-->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Portfolio-as-Code — A Jekyll developer portfolio template. Fork, fill JSON, deploy." />
+<meta name="author" content="Pilli Sai Surya Kiran" />
+
+<!-- SEO & Social Sharing (Open Graph) -->
+<meta property="og:title" content="Pilli Sai Surya Kiran | Portfolio" />
+<meta property="og:description" content="Portfolio-as-Code — A Jekyll developer portfolio template. Fork, fill JSON, deploy." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://saisuryakiran1.github.io/theprofile/" />
+
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Pilli Sai Surya Kiran | Portfolio" />
+<meta name="twitter:description" content="Portfolio-as-Code — A Jekyll developer portfolio template. Fork, fill JSON, deploy." />
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://saisuryakiran1.github.io/theprofile/" />
+
+<title>Pilli Sai Surya Kiran | Portfolio</title>
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/theprofile/assets/img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/theprofile/assets/img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/theprofile/assets/img/favicon/favicon-16x16.png">
+<link rel="manifest" href="/theprofile/assets/img/favicon/site.webmanifest">
+<link rel="shortcut icon" href="/theprofile/assets/img/favicon/favicon.ico">
+
+<!-- 
+  FOUC Prevention: 
+  Injects design tokens from _data/profile.json into CSS variables 
+  and sets the initial theme before the browser paints the page.
+-->
+<style>
+  :root {
+    --color-primary:   #0d1117;
+    --color-secondary: #161b22;
+    --color-accent:    #58a6ff;
+    
+    /* Derived Glassmorphic Tokens */
+    --color-accent-subtle: color-mix(in srgb, var(--color-accent) 15%, transparent);
+    --color-border-glamour: color-mix(in srgb, var(--color-accent) 25%, var(--color-border, #30363d));
+  }
+</style>
+
+<script>
+  (function() {
+    // Theme initialization to prevent white flash in dark mode
+    var saved = localStorage.getItem('theprofile-theme');
+    var jsonDefault = 'dark';
+    var theme = saved || jsonDefault;
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+
+<!-- Main Stylesheet (Orchestrated Modular SASS) -->
+<link rel="stylesheet" href="/theprofile/assets/css/main.css" />
+
+  
+  <body>
+    <!-- Global Navigation -->
+    <!-- 
+  TheProFile — Navigation
+  A high-fidelity glassmorphism navbar with dynamic link generation,
+  theme toggling, and sound state management.
+-->
+<nav class="nav" role="navigation" aria-label="Primary navigation">
+  <div class="container nav__inner">
+    
+    <!-- Branding / Logo -->
+    <a href="/theprofile/#hero" class="nav__brand" aria-label="Go to home">
+      
+        <img 
+          src="/theprofile/assets/img/logo.png" 
+          alt="Pilli Sai Surya Kiran Logo" 
+          class="nav__logo-img"
+          loading="eager"
+        >
+      
+    </a>
+
+    <!-- Navigation Links -->
+    <ul class="nav__links" role="list" id="nav-links">
+      <div class="nav__indicator" aria-hidden="true"></div>
+      
+      <li><a href="/theprofile/#profile"         class="nav__link">About</a></li>
+      <li><a href="/theprofile/#experience"      class="nav__link">Experience</a></li>
+      <li><a href="/theprofile/#skills"          class="nav__link">Skills</a></li>
+      <li><a href="/theprofile/#projects"        class="nav__link">Projects</a></li>
+      <li><a href="/theprofile/#contact"         class="nav__link">Contact</a></li>
+      
+      <!-- Conditional Blog Link -->
+      
+    </ul>
+
+    <!-- Action Buttons -->
+    <div class="nav__actions">
+      
+      <!-- Cinematic Sound Toggle (Vanta & Audio) -->
+      
+
+      <!-- Dark/Light theme toggle -->
+      <button
+        id="theme-toggle"
+        class="nav__theme-toggle"
+        aria-label="Toggle dark/light mode"
+        title="Toggle theme"
+      >
+        <!-- Sun icon (Visible in Light Mode) -->
+        <svg class="icon icon--sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <!-- Moon icon (Visible in Dark Mode) -->
+        <svg class="icon icon--moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+
+      <!-- Mobile Menu Toggle -->
+      <button
+        id="nav-toggle"
+        class="nav__hamburger"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-links"
+      >
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+    <main id="main-content">
+      <!-- 
+  TheProFile — Single Page Application (SPA) Orchestrator
+  This file includes all homepage sections in their defined scroll order.
+-->
+
+<section id="hero" class="hero" aria-label="Hero">
+  <!-- Magical Shockwave Overlay -->
+  <div class="hero__magic-wave" id="vanta-shockwave"></div>
+  
+  <div class="container hero__content">
+    
+    <div id="vanta-trigger" class="hero__badge">
+      <span class="hero__dot" aria-hidden="true"></span>
+      Available for opportunities
+    </div>
+    
+    
+    <h1 class="hero__name">Pilli Sai Surya Kiran</h1>
+    
+    <p class="hero__headline" data-gsap="hero-headline">
+      AI/ML Engineer building NLP, RAG, and applied ML systems.<span class="typing-dots"></span>
+    </p>
+    <div class="hero__cta-group">
+      <a id="hero-resume-btn" href="https://www.linkedin.com/in/sai-surya-kiran-pilli" class="hero__cta hero__cta--primary" target="_blank" rel="noopener noreferrer">
+        View Resume
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </a>
+      <a id="hero-contact-btn" href="#contact" class="hero__cta hero__cta--secondary">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- 
+  TheProFile — Profile Section
+  Displays the developer's avatar and biography.
+  Data: site.data.profile.bio, site.data.profile.profile_image_url
+-->
+<section id="profile" class="profile section-wrapper" aria-label="About Me">
+  <div class="container profile__inner">
+    
+    <!-- Profile Avatar -->
+    <div class="profile__image-wrap">
+      <img
+        src="/theprofile/assets/img/logo.png"
+        alt="Pilli Sai Surya Kiran"
+        class="profile__image"
+        width="280"
+        height="280"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Biography Content -->
+    <div class="profile__content">
+      <h2 class="section-title">About Me</h2>
+      <p class="profile__bio">I'm an AI/ML engineer based in Bengaluru, working across NLP, deep learning, and RAG/LLM pipelines. I hold an MCA in Computing & AI from NEHU and a BSc in Computer Science from Andhra University. My dissertation combined GRU, BiGRU, BiLSTM, and attention mechanisms for emotion detection from text, and I've since worked on fraud detection, retrieval-augmented generation, and applied ML projects across research and industry settings.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 
+  TheProFile — Experience Section
+  A vertical timeline of professional work experience.
+  Data: site.data.profile.experience
+-->
+<section id="experience" class="experience section-wrapper" aria-label="Work Experience">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Experience</h2>
+    </div>
+
+    <div class="experience__list">
+      
+        <article class="experience__item">
+          <!-- Role & Duration Header -->
+          <div class="experience__header">
+            <h3 class="experience__role">AI/ML Engineer Intern</h3>
+            <span class="experience__duration" aria-label="Duration">Dec 2025 – Jun 2026</span>
+          </div>
+
+          <!-- Company Link/Text -->
+          
+            <span class="experience__company">Intact Intern Stump Solutions Pvt. Ltd.</span>
+          
+          
+          <!-- Task Description (List or Paragraph) -->
+          
+            <ul class="experience__description-list" role="list">
+              
+                <li>Worked on applied machine learning and NLP tasks across the internship period, building and evaluating model pipelines using Python and PyTorch/TensorFlow.</li>
+              
+                <li>Contributed to LLM and RAG-related workflows, including experimentation with LangChain, LlamaIndex, and ChromaDB.</li>
+              
+                <li>Collaborated using Git/GitHub for version control and Docker for environment consistency across development and testing.</li>
+              
+            </ul>
+          
+        </article>
+      
+    </div>
+  </div>
+</section>
+
+<!-- 
+  TheProFile — Education Section
+  A vertical timeline of academic achievements.
+  Data: site.data.profile.education
+-->
+<section id="education" class="education section-wrapper" aria-label="Education History">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Education</h2>
+    </div>
+
+    <div class="education__list">
+      
+        <article class="education__item">
+          <!-- Degree & Graduation Year Header -->
+          <div class="education__header">
+            <h3 class="education__degree">MCA — Computing & AI</h3>
+            <span class="education__year" aria-label="Graduation Year">2025</span>
+          </div>
+
+          <!-- Academic Institution -->
+          <span class="education__institution">North-Eastern Hill University (NEHU)</span>
+          
+          <!-- Optional Honors or Details -->
+          
+            
+              <ul class="experience__description-list" role="list">
+                
+                  <li>Dissertation: "Emotion Detection from Text using Hybrid Deep Learning Architectures" — a GRU + BiGRU + BiLSTM + Attention model achieving 96.76% accuracy on the 28-class GoEmotions benchmark (43,411 samples).</li>
+                
+                  <li>Supervised by Dr. Ansuman Kumar, NEHU Tura Campus.</li>
+                
+              </ul>
+            
+          
+        </article>
+      
+        <article class="education__item">
+          <!-- Degree & Graduation Year Header -->
+          <div class="education__header">
+            <h3 class="education__degree">BSc — Computer Science</h3>
+            <span class="education__year" aria-label="Graduation Year"></span>
+          </div>
+
+          <!-- Academic Institution -->
+          <span class="education__institution">Andhra University</span>
+          
+          <!-- Optional Honors or Details -->
+          
+            
+              <p class="experience__description"></p>
+            
+          
+        </article>
+      
+    </div>
+  </div>
+</section>
+
+<!-- 
+  TheProFile — Skills Section (Bento Grid)
+  A dynamic responsive grid that adjusts card spans based on category count.
+  Data: site.data.profile.skills
+-->
+<section id="skills" class="section-wrapper skills" aria-label="Technical Skills">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Skills</h2>
+    </div>
+
+    <!-- Bento Grid Container -->
+    <div class="skills-bento-grid">
+      
+      
+      
+        
+        
+        <!-- Logic to determine card span based on total category count -->
+        
+        
+
+        <article class="skills-card skills-card--span-8" role="region" aria-labelledby="skill-cat-1">
+          <div class="skills-card__content">
+            <h3 class="skills-card__category" id="skill-cat-1">AI/ML Core</h3>
+            <div class="skills-card__list">
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="python" role="img" aria-label="Technology: Python">
+  <img 
+    src="https://cdn.simpleicons.org/python" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Python</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="pytorch" role="img" aria-label="Technology: PyTorch">
+  <img 
+    src="https://cdn.simpleicons.org/pytorch" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">PyTorch</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="tensorflow" role="img" aria-label="Technology: TensorFlow">
+  <img 
+    src="https://cdn.simpleicons.org/tensorflow" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">TensorFlow</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="huggingface transformers" role="img" aria-label="Technology: HuggingFace Transformers">
+  <img 
+    src="https://cdn.simpleicons.org/huggingface" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">HuggingFace Transformers</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="fastapi" role="img" aria-label="Technology: FastAPI">
+  <img 
+    src="https://cdn.simpleicons.org/fastapi" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">FastAPI</span>
+</div>
+
+              
+            </div>
+          </div>
+        </article>
+      
+        
+        
+        <!-- Logic to determine card span based on total category count -->
+        
+        
+
+        <article class="skills-card skills-card--span-4" role="region" aria-labelledby="skill-cat-2">
+          <div class="skills-card__content">
+            <h3 class="skills-card__category" id="skill-cat-2">LLM & RAG</h3>
+            <div class="skills-card__list">
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="langchain" role="img" aria-label="Technology: LangChain">
+  <img 
+    src="https://cdn.simpleicons.org/langchain" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">LangChain</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="llamaindex" role="img" aria-label="Technology: LlamaIndex">
+  <img 
+    src="https://cdn.simpleicons.org/llamaindex" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">LlamaIndex</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="chromadb" role="img" aria-label="Technology: ChromaDB">
+  <img 
+    src="https://cdn.simpleicons.org/chromadb" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">ChromaDB</span>
+</div>
+
+              
+            </div>
+          </div>
+        </article>
+      
+        
+        
+        <!-- Logic to determine card span based on total category count -->
+        
+        
+
+        <article class="skills-card skills-card--span-4" role="region" aria-labelledby="skill-cat-3">
+          <div class="skills-card__content">
+            <h3 class="skills-card__category" id="skill-cat-3">Data & Infra</h3>
+            <div class="skills-card__list">
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="sql" role="img" aria-label="Technology: SQL">
+  <img 
+    src="https://cdn.simpleicons.org/mysql" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">SQL</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="pyspark" role="img" aria-label="Technology: PySpark">
+  <img 
+    src="https://cdn.simpleicons.org/apachespark" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">PySpark</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="docker" role="img" aria-label="Technology: Docker">
+  <img 
+    src="https://cdn.simpleicons.org/docker" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Docker</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="git/github" role="img" aria-label="Technology: Git/GitHub">
+  <img 
+    src="https://cdn.simpleicons.org/github" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Git/GitHub</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="gcp" role="img" aria-label="Technology: GCP">
+  <img 
+    src="https://cdn.simpleicons.org/googlecloud" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">GCP</span>
+</div>
+
+              
+            </div>
+          </div>
+        </article>
+      
+        
+        
+        <!-- Logic to determine card span based on total category count -->
+        
+        
+
+        <article class="skills-card skills-card--span-8" role="region" aria-labelledby="skill-cat-4">
+          <div class="skills-card__content">
+            <h3 class="skills-card__category" id="skill-cat-4">BI & Visualization</h3>
+            <div class="skills-card__list">
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="power bi" role="img" aria-label="Technology: Power BI">
+  <img 
+    src="https://cdn.simpleicons.org/powerbi" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Power BI</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="tableau" role="img" aria-label="Technology: Tableau">
+  <img 
+    src="https://cdn.simpleicons.org/tableau" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Tableau</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="streamlit" role="img" aria-label="Technology: Streamlit">
+  <img 
+    src="https://cdn.simpleicons.org/streamlit" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Streamlit</span>
+</div>
+
+              
+            </div>
+          </div>
+        </article>
+      
+    </div>
+  </div>
+</section>
+
+<!-- 
+  TheProFile — Projects Section
+  A grid of featured projects with tech chips and external links.
+  Curated Limit: Always shows at most 6 projects (P4).
+  Data: site.data.profile.projects
+-->
+<section id="projects" class="projects section-wrapper" aria-label="Featured Projects">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Projects</h2>
+    </div>
+
+    <!-- Project Grid -->
+    <div class="project-grid">
+      
+        <article class="project-card" data-index="0">
+          
+          <!-- Project Thumbnail -->
+          
+
+          <div class="project-card__content">
+            <h3 class="project-card__title">Emotion Detection from Text (MCA Dissertation)</h3>
+            <p class="project-card__description">A hybrid deep learning architecture (GRU + BiGRU + BiLSTM + Attention) for multi-label emotion classification, achieving 96.76% accuracy on the 28-class GoEmotions benchmark across 43,411 samples.</p>
+
+            <!-- Technologies Used -->
+            <div class="project-card__stack" aria-label="Technologies used">
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="python" role="img" aria-label="Technology: Python">
+  <img 
+    src="https://cdn.simpleicons.org/python" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Python</span>
+</div>
+
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="pytorch" role="img" aria-label="Technology: PyTorch">
+  <img 
+    src="https://cdn.simpleicons.org/pytorch" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">PyTorch</span>
+</div>
+
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="deep learning" role="img" aria-label="Technology: Deep Learning">
+  <img 
+    src="https://cdn.simpleicons.org/brain" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Deep Learning</span>
+</div>
+
+              
+            </div>
+
+            <!-- Project Deep-links -->
+            <div class="project-card__links">
+              
+              
+              
+            </div>
+          </div>
+        </article>
+      
+        <article class="project-card" data-index="1">
+          
+          <!-- Project Thumbnail -->
+          
+
+          <div class="project-card__content">
+            <h3 class="project-card__title">TRINETRA</h3>
+            <p class="project-card__description">Submitted to the UIDAI Data Hackathon 2026 and nationally shortlisted.</p>
+
+            <!-- Technologies Used -->
+            <div class="project-card__stack" aria-label="Technologies used">
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="python" role="img" aria-label="Technology: Python">
+  <img 
+    src="https://cdn.simpleicons.org/python" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Python</span>
+</div>
+
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="machine learning" role="img" aria-label="Technology: Machine Learning">
+  <img 
+    src="https://cdn.simpleicons.org/scikitlearn" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Machine Learning</span>
+</div>
+
+              
+            </div>
+
+            <!-- Project Deep-links -->
+            <div class="project-card__links">
+              
+              
+              
+            </div>
+          </div>
+        </article>
+      
+        <article class="project-card" data-index="2">
+          
+          <!-- Project Thumbnail -->
+          
+
+          <div class="project-card__content">
+            <h3 class="project-card__title">Financial Fraud Detection Pipeline</h3>
+            <p class="project-card__description">An end-to-end fraud detection pipeline using PySpark for large-scale data processing, XGBoost for classification, and SMOTE to handle class imbalance.</p>
+
+            <!-- Technologies Used -->
+            <div class="project-card__stack" aria-label="Technologies used">
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="pyspark" role="img" aria-label="Technology: PySpark">
+  <img 
+    src="https://cdn.simpleicons.org/apachespark" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">PySpark</span>
+</div>
+
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="xgboost" role="img" aria-label="Technology: XGBoost">
+  <img 
+    src="https://cdn.simpleicons.org/python" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">XGBoost</span>
+</div>
+
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="smote" role="img" aria-label="Technology: SMOTE">
+  <img 
+    src="https://cdn.simpleicons.org/scikitlearn" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">SMOTE</span>
+</div>
+
+              
+            </div>
+
+            <!-- Project Deep-links -->
+            <div class="project-card__links">
+              
+              
+              
+            </div>
+          </div>
+        </article>
+      
+        <article class="project-card" data-index="3">
+          
+          <!-- Project Thumbnail -->
+          
+
+          <div class="project-card__content">
+            <h3 class="project-card__title">RAG/LLM Research Pipeline</h3>
+            <p class="project-card__description">A retrieval-augmented generation pipeline built with LangChain, LlamaIndex, and ChromaDB, integrated with GPT-4o for document-grounded question answering.</p>
+
+            <!-- Technologies Used -->
+            <div class="project-card__stack" aria-label="Technologies used">
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="langchain" role="img" aria-label="Technology: LangChain">
+  <img 
+    src="https://cdn.simpleicons.org/langchain" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">LangChain</span>
+</div>
+
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="llamaindex" role="img" aria-label="Technology: LlamaIndex">
+  <img 
+    src="https://cdn.simpleicons.org/llamaindex" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">LlamaIndex</span>
+</div>
+
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="chromadb" role="img" aria-label="Technology: ChromaDB">
+  <img 
+    src="https://cdn.simpleicons.org/chromadb" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">ChromaDB</span>
+</div>
+
+              
+            </div>
+
+            <!-- Project Deep-links -->
+            <div class="project-card__links">
+              
+              
+              
+            </div>
+          </div>
+        </article>
+      
+        <article class="project-card" data-index="4">
+          
+          <!-- Project Thumbnail -->
+          
+
+          <div class="project-card__content">
+            <h3 class="project-card__title">Sports Tournament Management System</h3>
+            <p class="project-card__description">A system for organizing and managing sports tournaments — scheduling, scoring, and participant management.</p>
+
+            <!-- Technologies Used -->
+            <div class="project-card__stack" aria-label="Technologies used">
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="python" role="img" aria-label="Technology: Python">
+  <img 
+    src="https://cdn.simpleicons.org/python" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Python</span>
+</div>
+
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="sql" role="img" aria-label="Technology: SQL">
+  <img 
+    src="https://cdn.simpleicons.org/mysql" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">SQL</span>
+</div>
+
+              
+            </div>
+
+            <!-- Project Deep-links -->
+            <div class="project-card__links">
+              
+              
+              
+            </div>
+          </div>
+        </article>
+      
+    </div>
+  </div>
+</section>
+
+<!-- 
+  TheProFile — Recommendations Section
+  A grid of peer/manager testimonials.
+  Data: site.data.profile.recommendations
+-->
+<section id="recommendations" class="recommendations section-wrapper" aria-label="Peer Recommendations">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Recommendations</h2>
+    </div>
+
+    <!-- Recommendations Grid -->
+    <div class="recommendations__grid">
+      
+    </div>
+  </div>
+</section>
+
+<!-- 
+  TheProFile — Contact Section
+  Premium two-column layout for CTA and social profiles.
+  Data: site.data.profile.email, site.data.profile.social[]
+-->
+<section id="contact" class="contact section-wrapper" aria-label="Contact Information">
+  <div class="container">
+
+    <div class="contact__grid">
+
+      <!-- LEFT: Call to Action Column -->
+      <div class="contact__cta-col">
+        <div class="contact__eyebrow" role="status">
+          <span class="contact__dot" aria-hidden="true"></span>
+          Open to opportunities
+        </div>
+
+        <h2 class="section-title contact__title">
+          Let's Build<br>Something<br><span class="contact__title-accent">Great Together</span>
+        </h2>
+
+        <p class="contact__intro">
+          Whether it's a full-time role, a side project, or just a great conversation — my inbox is always open. I typically reply within 24 hours.
+        </p>
+
+        <!-- Copy Email Interaction (handled by assets/js/contact-scripts.js) -->
+        <div class="contact__email-block">
+          <span class="contact__email-label">Reach me directly</span>
+          <button
+            id="copy-email-btn"
+            class="contact__email-btn"
+            data-email="saisurya7722@gmail.com"
+            aria-label="Copy email address to clipboard"
+            title="Click to copy email"
+          >
+            <!-- Email Icon Wrapper (Matches social icon style) -->
+            <div class="contact__email-icon-wrapper" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+
+            <div class="contact__email-text-group">
+              <span class="contact__email-text">saisurya7722@gmail.com</span>
+              <span class="contact__email-subtext">Click to copy address</span>
+            </div>
+
+            <!-- Copy Icon (Matches social arrow style) -->
+            <svg class="contact__copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            <span class="contact__copy-feedback" aria-live="polite"></span>
+          </button>
+        </div>
+
+        <!-- Trust Indicator -->
+        <div class="contact__promise">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          Avg. response time: &lt; 24 hours
+        </div>
+      </div>
+
+      <!-- RIGHT: Social Platform Cards -->
+      <div class="contact__social-col" role="list" aria-label="Social media profiles">
+        
+          
+            <article role="listitem">
+              <a
+                href="https://www.linkedin.com/in/sai-surya-kiran-pilli"
+                class="contact__social-card"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Follow on LinkedIn"
+                aria-label="Visit my LinkedIn profile"
+              >
+                <!-- Platform Icon (Case-matched in Liquid) -->
+                <div class="contact__social-icon" aria-hidden="true">
+                  
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062-0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    
+                </div>
+
+                <div class="contact__social-info">
+                  <span class="contact__social-name">LinkedIn</span>
+                  <span class="contact__social-handle" aria-label="Username/Handle">www.linkedin.com/in/sai-surya-ki</span>
+                </div>
+
+                <!-- External Arrow -->
+                <svg class="contact__social-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+                </svg>
+              </a>
+            </article>
+          
+        
+          
+            <article role="listitem">
+              <a
+                href="mailto:saisurya7722@gmail.com"
+                class="contact__social-card"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Follow on Email"
+                aria-label="Visit my Email profile"
+              >
+                <!-- Platform Icon (Case-matched in Liquid) -->
+                <div class="contact__social-icon" aria-hidden="true">
+                  
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                  
+                </div>
+
+                <div class="contact__social-info">
+                  <span class="contact__social-name">Email</span>
+                  <span class="contact__social-handle" aria-label="Username/Handle">mailto:saisurya7722@gmail.com</span>
+                </div>
+
+                <!-- External Arrow -->
+                <svg class="contact__social-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+                </svg>
+              </a>
+            </article>
+          
+        
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    </main>
+
+    <!-- Global Footer -->
+    <!-- 
+  TheProFile — Footer
+  Minimalist footer with dynamic copyright year and back-to-top navigation.
+-->
+<footer class="footer" role="contentinfo">
+  <div class="container footer__inner">
+    <div class="footer__left">
+      <p class="footer__copy">
+        &copy; 2026 Pilli Sai Surya Kiran. All rights reserved.
+      </p>
+      <p class="footer__credit">
+        Built with <a href="https://github.com/SriSatyaLokesh/theprofile" target="_blank" rel="noopener">TheProFile</a>
+        — Portfolio-as-Code.
+      </p>
+    </div>
+
+    <!-- Back to Top Actions -->
+    <div class="footer__right">
+      <a href="#hero" class="footer__back-to-top" title="Back to Top" aria-label="Scroll back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- Custom Cursor Markup -->
+    
+      <div class="cursor-dot"></div>
+      <div class="cursor-outline"></div>
+    
+
+    <!-- Initialization of Cinematic Effects -->
+    
+    
+      <!-- 
+  TheProFile — Vanta Initialization
+  Handles the conditional loading of Vanta.js dependencies and
+  injects Liquid configuration tokens for the Vanta Controller.
+-->
+
+
+
+<!-- Dependency: Three.js (Core) -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
+<!-- Dependency: P5.js (Select Effects Only) -->
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+
+<!-- Dependency: Initial Vanta Effect Script -->
+<script defer src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+
+<!-- Pass Liquid Configuration to the Vanta Controller -->
+<script>
+  window.THE_PROFILE_CONFIG = Object.assign(window.THE_PROFILE_CONFIG || {}, {
+    vantaEffect: 'birds',
+    accentColor: '#58a6ff',
+    primaryColor: '#0d1117',
+    lightBg: '#f0f4f8'
+  });
+</script>
+
+<!-- Main Vanta Controller Logic -->
+<script defer src="/theprofile/assets/js/vanta-controller.js"></script>
+
+    
+
+    <!-- Global Audio Component -->
+    <!-- 
+  TheProFile — Audio Player Include
+  Sets up the audio element with Liquid configuration and handles
+  the inclusion of the audio controller script.
+-->
+
+
+
+
+    <!-- Core Interactions & Animations (Deferred) -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="/theprofile/assets/js/theme-controller.js"></script>
+    <script defer src="/theprofile/assets/js/smooth-scroll.js"></script>
+    <script defer src="/theprofile/assets/js/gsap-animations.js"></script>
+    <script defer src="/theprofile/assets/js/contact-scripts.js"></script>
+    
+      <script src="/theprofile/assets/js/cursor-controller.js" defer></script>
+    
+  </body>
+</html>
