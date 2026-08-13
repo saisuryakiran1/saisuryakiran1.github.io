@@ -1,7 +1,7 @@
 {
   "theme_config": {
     "mode": "dark",
-    "vanta_effect": "birds",
+    "vanta_effect": "net",
     "vanta_magic": true,
     "colors": {
       "primary": "#0d1117",
@@ -9,13 +9,11 @@
       "accent": "#58a6ff"
     },
     "music": {
-      "enabled": false,
-      "file": "/assets/music/interstellar.mp3",
+      "enabled": true,
+      "file": "./assets/music/interstellar.mp3",
       "max_volume": 1.0
     },
-    "use_logo_image": true,
-    "nav_bar_logo_url": "/assets/img/logo.png",
-    "custom_cursor": true
+    "use_logo_image": false
   },
 
   "available_for_work": true,
@@ -24,11 +22,11 @@
   },
 
   "name": "Pilli Sai Surya Kiran",
-  "headline": "AI/ML Engineer building NLP, RAG, and applied ML systems.",
+  "headline": "AI/ML Engineer · NLP, RAG & Applied Deep Learning",
   "email": "saisurya7722@gmail.com",
-  "profile_image_url": "/assets/img/logo.png",
+  "profile_image_url": "",
   "resume_url": "https://www.linkedin.com/in/sai-surya-kiran-pilli",
-  "bio": "I'm an AI/ML engineer based in Bengaluru, working across NLP, deep learning, and RAG/LLM pipelines. I hold an MCA in Computing & AI from NEHU and a BSc in Computer Science from Andhra University. My dissertation combined GRU, BiGRU, BiLSTM, and attention mechanisms for emotion detection from text, and I've since worked on fraud detection, retrieval-augmented generation, and applied ML projects across research and industry settings.",
+  "bio": "AI/ML engineer based in Bengaluru, working across NLP, deep learning, and RAG/LLM pipelines. I hold an MCA in Computing & AI from North-Eastern Hill University and a BSc in Computer Science from Andhra University. My dissertation combined GRU, BiGRU, BiLSTM, and attention mechanisms for emotion detection from text, and I've since built fraud detection pipelines, retrieval-augmented generation systems, and applied ML projects spanning research and industry settings.",
 
   "social": [
     { "platform": "LinkedIn", "url": "https://www.linkedin.com/in/sai-surya-kiran-pilli", "logo": "linkedin", "color": "0A66C2" },
@@ -42,7 +40,7 @@
       "company_url": "",
       "duration": "Dec 2025 – Jun 2026",
       "description": [
-        "Worked on applied machine learning and NLP tasks across the internship period, building and evaluating model pipelines using Python and PyTorch/TensorFlow.",
+        "Worked on applied machine learning and NLP tasks, building and evaluating model pipelines using Python and PyTorch/TensorFlow.",
         "Contributed to LLM and RAG-related workflows, including experimentation with LangChain, LlamaIndex, and ChromaDB.",
         "Collaborated using Git/GitHub for version control and Docker for environment consistency across development and testing."
       ]
