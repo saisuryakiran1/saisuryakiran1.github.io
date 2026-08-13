@@ -9,153 +9,139 @@
       "accent": "#58a6ff"
     },
     "music": {
-      "enabled": true,
+      "enabled": false,
       "file": "/assets/music/interstellar.mp3",
       "max_volume": 1.0
     },
     "use_logo_image": true,
-    "nav_bar_logo_url": "/assets/img/theprofile.png",
+    "nav_bar_logo_url": "/assets/img/logo.png",
     "custom_cursor": true
   },
 
   "available_for_work": true,
   "blog_config": {
-    "enabled": true
+    "enabled": false
   },
 
-  "name": "{ TheProFile }",
-  "headline": "The Portfolio-as-Code Template with Zero code & Maximum Impact.",
-  "email": "srisatyalokesh@duck.com",
+  "name": "Pilli Sai Surya Kiran",
+  "headline": "AI/ML Engineer building NLP, RAG, and applied ML systems.",
+  "email": "saisurya7722@gmail.com",
   "profile_image_url": "/assets/img/logo.png",
-  "resume_url": "https://github.com/SriSatyaLokesh/theprofile",
-  "bio": "I am a high-fidelity, single-page Jekyll template born from a deep-seated hatred for drag-and-drop builders. I live in a single JSON file and dream of pixel-perfect glassmorphism. I don't need a CV; I am the CV. I'm here to ensure your career looks like it was built by a team of Silicon Valley designers, even if you just finished your second coffee.",
+  "resume_url": "https://www.linkedin.com/in/sai-surya-kiran-pilli",
+  "bio": "I'm an AI/ML engineer based in Bengaluru, working across NLP, deep learning, and RAG/LLM pipelines. I hold an MCA in Computing & AI from NEHU and a BSc in Computer Science from Andhra University. My dissertation combined GRU, BiGRU, BiLSTM, and attention mechanisms for emotion detection from text, and I've since worked on fraud detection, retrieval-augmented generation, and applied ML projects across research and industry settings.",
 
   "social": [
-    { "platform": "GitHub",    "url": "https://github.com/SriSatyaLokesh/theprofile",       "logo": "github",       "color": "181717" },
-    { "platform": "Twitter",   "url": "https://twitter.com",                          "logo": "twitter",      "color": "1DA1F2" },
-    { "platform": "LinkedIn",  "url": "https://linkedin.com",                         "logo": "linkedin",     "color": "0A66C2" },
-    { "platform": "Dev.to",    "url": "https://dev.to",                               "logo": "devdotto",     "color": "0A0A0A" }
+    { "platform": "LinkedIn", "url": "https://www.linkedin.com/in/sai-surya-kiran-pilli", "logo": "linkedin", "color": "0A66C2" },
+    { "platform": "Email", "url": "mailto:saisurya7722@gmail.com", "logo": "gmail", "color": "D14836" }
   ],
 
   "experience": [
     {
-      "role": "Senior Portfolio Engine",
-      "company": "GitHub Pages",
-      "company_url": "https://pages.github.com",
-      "duration": "Jan 2026 – Present",
+      "role": "AI/ML Engineer Intern",
+      "company": "Intact Intern Stump Solutions Pvt. Ltd.",
+      "company_url": "",
+      "duration": "Dec 2025 – Jun 2026",
       "description": [
-        "Automated the career glow-up of thousands of developers by providing 6 interactable WebGL backgrounds they didn't know they needed.",
-        "Reduced 'Time to Landing Page' from weeks of CSS wrestling to 3 minutes of JSON editing — causing a 400% increase in developer confidence.",
-        "Successfully defended the 'Portfolio-as-Code' philosophy against the invading forces of drag-and-drop website builders.",
-        "Implemented a Dual-Trigger Easter Egg discovery system: Double-click the status badge for a background shockwave, or the Navbar logo for a sequential branding makeover.",
-        "Engineered a context-aware theme engine that intelligently preserves readability by selectively applying color palettes based on Light/Dark mode state."
-      ]
-    },
-    {
-      "role": "Lead CSS Wrestler",
-      "company": "The Internet",
-      "company_url": "https://www.w3.org",
-      "duration": "Oct 2025 – Present",
-      "description": [
-        "Centering a <div> while simultaneously maintaining Backdrop Blur (12px) without causing a browser meltdown.",
-        "Optimized GSAP entrance choreography to be 45% more 'satisfying' according to highly scientific internal audits.",
-        "Engineered a glassmorphism navigation system so floating it actually feels like it's made of real glass (without the risk of cuts).",
-        "Wrote 1,000+ lines of SCSS using CSS Custom Properties so users don't have to look at hex codes ever again."
+        "Worked on applied machine learning and NLP tasks across the internship period, building and evaluating model pipelines using Python and PyTorch/TensorFlow.",
+        "Contributed to LLM and RAG-related workflows, including experimentation with LangChain, LlamaIndex, and ChromaDB.",
+        "Collaborated using Git/GitHub for version control and Docker for environment consistency across development and testing."
       ]
     }
   ],
 
   "skills": [
     {
-      "category": "Frontend Soul",
-      "items": ["Jekyll", "Liquid Magic", "SCSS Architect", "GSAP Moves"],
-      "logos": ["jekyll", "shopify", "sass", "greensock"]
+      "category": "AI/ML Core",
+      "items": ["Python", "PyTorch", "TensorFlow", "HuggingFace Transformers", "FastAPI"],
+      "logos": ["python", "pytorch", "tensorflow", "huggingface", "fastapi"]
     },
     {
-      "category": "Data Brain",
-      "items": ["JSON Schema", "Git Workflows", "Actions Automation", "YAML Whispering"],
-      "logos": ["json", "git", "githubactions", "github"]
+      "category": "LLM & RAG",
+      "items": ["LangChain", "LlamaIndex", "ChromaDB"],
+      "logos": ["langchain", "llamaindex", "chromadb"]
     },
     {
-      "category": "Visual Heart",
-      "items": ["Vanta.js", "Three.js", "WebGL", "Glassmorphism"],
-      "logos": ["visualstudiocode", "threejs", "webgl", "css3"]
+      "category": "Data & Infra",
+      "items": ["SQL", "PySpark", "Docker", "Git/GitHub", "GCP"],
+      "logos": ["mysql", "apachespark", "docker", "github", "googlecloud"]
+    },
+    {
+      "category": "BI & Visualization",
+      "items": ["Power BI", "Tableau", "Streamlit"],
+      "logos": ["powerbi", "tableau", "streamlit"]
     }
   ],
 
   "education": [
     {
-      "degree": "PhD in Zero-Code Architecture",
-      "institution": "University of Open Source",
-      "year": "2026",
+      "degree": "MCA — Computing & AI",
+      "institution": "North-Eastern Hill University (NEHU)",
+      "year": "2025",
       "description": [
-        "Defended a groundbreaking thesis on why developers should spend time coding features, not fighting with HTML boilerplate.",
-        "Minor in 'Monochromatic Theme Synchronization' — proving that any website looks elite with the right accent color.",
-        "Dean's List for 'Most Optimized Jekyll Build Time' (2025)."
+        "Dissertation: \"Emotion Detection from Text using Hybrid Deep Learning Architectures\" — a GRU + BiGRU + BiLSTM + Attention model achieving 96.76% accuracy on the 28-class GoEmotions benchmark (43,411 samples).",
+        "Supervised by Dr. Ansuman Kumar, NEHU Tura Campus."
       ]
     },
     {
-      "degree": "Master of Portfolio Automation",
-      "institution": "Self-Taught via SriSatyaLokesh",
-      "year": "2025",
-      "description": [
-        "Mastered the art of JSON-to-Elite-Portfolio transformation.",
-        "Learned to orchestrate GSAP and Vanta.js for maximum cinematic impact."
-      ]
+      "degree": "BSc — Computer Science",
+      "institution": "Andhra University",
+      "year": "",
+      "description": []
     }
   ],
 
   "projects": [
     {
-      "title": "{ TheProFile }",
-      "description": "A high-fidelity Portfolio-as-Code template. Focus on content in a single JSON file while the engine handles design, cinematic audio, and WebGL. Pro-tip: Double-click the Navbar logo for a branding makeover, or the 'Available for work' badge for background magic.",
-      "image_url": "/assets/img/theprofile.png",
-      "stack":        ["Jekyll",    "SCSS",     "GSAP"],
-      "stack_colors": ["CC0000",    "1572B6",   "88CE02"],
-      "stack_logos":  ["jekyll",    "css3",     "greensock"],
-      "code_url": "https://github.com/SriSatyaLokesh/theprofile",
-      "live_url": "https://srisatyalokesh.github.io/theprofile/"
+      "title": "Emotion Detection from Text (MCA Dissertation)",
+      "description": "A hybrid deep learning architecture (GRU + BiGRU + BiLSTM + Attention) for multi-label emotion classification, achieving 96.76% accuracy on the 28-class GoEmotions benchmark across 43,411 samples.",
+      "image_url": "",
+      "stack": ["Python", "PyTorch", "Deep Learning"],
+      "stack_colors": ["3776AB", "EE4C2C", "58a6ff"],
+      "stack_logos": ["python", "pytorch", "brain"],
+      "code_url": "",
+      "live_url": ""
     },
     {
-      "title": "Open Certificate Generator",
-      "description": "An automated bulk certificate generation engine. Designed for hackathons and organizations to generate branded, professional certificates from raw data in seconds.",
-      "image_url": "https://srisatyalokesh.github.io/open-certificate-generator/assets/img/og-default.jpg",
-      "stack":        ["React",     "Canvas API", "Node.js"],
-      "stack_colors": ["61DAFB",    "000000",     "339933"],
-      "stack_logos":  ["react",     "html5",      "nodedotjs"],
-      "code_url": "https://github.com/SriSatyaLokesh/open-certificate-generator",
-      "live_url": "https://srisatyalokesh.github.io/open-certificate-generator/"
+      "title": "TRINETRA",
+      "description": "Submitted to the UIDAI Data Hackathon 2026 and nationally shortlisted.",
+      "image_url": "",
+      "stack": ["Python", "Machine Learning"],
+      "stack_colors": ["3776AB", "58a6ff"],
+      "stack_logos": ["python", "scikitlearn"],
+      "code_url": "",
+      "live_url": ""
     },
     {
-      "title": "Copilot Team Workflow",
-      "description": "A comprehensive framework of standards and workflows for maximizing team velocity with GitHub Copilot. Includes optimized prompts and pair-programming patterns for elite teams.",
-      "image_url": "https://images.ctfassets.net/8aevphvgewt8/2Zamxo7a7F9K9jsTAl2EGA/bce1f04a40536e89ef543cb311f2968b/github-copilot-cli.png",
-      "stack":        ["AI Prompts", "Workflows", "Git"],
-      "stack_colors": ["4F46E5",     "000000",    "F05032"],
-      "stack_logos":  ["openai",     "github",    "git"],
-      "code_url": "https://github.com/SriSatyaLokesh/copilot-team-workflow",
-      "live_url": "https://srisatyalokesh.github.io/copilot-team-workflow/"
+      "title": "Financial Fraud Detection Pipeline",
+      "description": "An end-to-end fraud detection pipeline using PySpark for large-scale data processing, XGBoost for classification, and SMOTE to handle class imbalance.",
+      "image_url": "",
+      "stack": ["PySpark", "XGBoost", "SMOTE"],
+      "stack_colors": ["E25A1C", "58a6ff", "0d1117"],
+      "stack_logos": ["apachespark", "python", "scikitlearn"],
+      "code_url": "",
+      "live_url": ""
+    },
+    {
+      "title": "RAG/LLM Research Pipeline",
+      "description": "A retrieval-augmented generation pipeline built with LangChain, LlamaIndex, and ChromaDB, integrated with GPT-4o for document-grounded question answering.",
+      "image_url": "",
+      "stack": ["LangChain", "LlamaIndex", "ChromaDB"],
+      "stack_colors": ["1C3C3C", "58a6ff", "FF6B6B"],
+      "stack_logos": ["langchain", "llamaindex", "chromadb"],
+      "code_url": "",
+      "live_url": ""
+    },
+    {
+      "title": "Sports Tournament Management System",
+      "description": "A system for organizing and managing sports tournaments — scheduling, scoring, and participant management.",
+      "image_url": "",
+      "stack": ["Python", "SQL"],
+      "stack_colors": ["3776AB", "4479A1"],
+      "stack_logos": ["python", "mysql"],
+      "code_url": "",
+      "live_url": ""
     }
   ],
 
-  "recommendations": [
-    {
-      "text": "I built TheProFile specifically to solve my own frustration with complex portfolio maintenance. Pro-tip: Double-click the 'Available for opportunities' badge for a little surprise.",
-      "name": "SriSatyaLokesh",
-      "title": "Creator of TheProFile",
-      "linkedin_url": "https://www.linkedin.com/in/srisatyalokesh"
-    },
-    {
-      "text": "TheProFile is so good, it actually convinced me to stop using React for a simple landing page. My Lighthouse score is 100/100 and my hands are finally clean of node_modules.",
-      "name": "A Grateful Developer",
-      "title": "Escaped React Dev",
-      "linkedin_url": ""
-    },
-    {
-      "text": "The Portfolio-as-Code philosophy is exactly what I needed. I spend all day in VS Code; why would I want to build my site in a browser drag-and-drop tool?",
-      "name": "Backend Guru",
-      "title": "Senior YAML Architect",
-      "linkedin_url": ""
-    }
-  ]
+  "recommendations": []
 }
