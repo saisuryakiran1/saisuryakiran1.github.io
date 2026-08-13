@@ -4,7 +4,7 @@
   This is the primary wrapper for the application. It handles the injection of
   head metadata, navigation, content, and global interaction scripts.
 -->
-<html lang="en" data-theme="dark" class="custom-cursor-active">
+<html lang="en" data-theme="dark" >
   
   <!-- 
   TheProFile — Head Metadata
@@ -84,12 +84,7 @@
     <!-- Branding / Logo -->
     <a href="/#hero" class="nav__brand" aria-label="Go to home">
       
-        <img 
-          src="/assets/img/logo.png" 
-          alt="Pilli Sai Surya Kiran Logo" 
-          class="nav__logo-img"
-          loading="eager"
-        >
+        Pilli Sai Surya Kiran
       
     </a>
 
@@ -111,6 +106,21 @@
     <div class="nav__actions">
       
       <!-- Cinematic Sound Toggle (Vanta & Audio) -->
+      
+      <button
+        id="sound-toggle"
+        class="nav__sound-toggle"
+        onclick="window.toggleSound()"
+        aria-label="Toggle background music"
+        title="Toggle Sound"
+      >
+        <div class="wavelength" aria-hidden="true">
+          <span class="wavelength__bar"></span>
+          <span class="wavelength__bar"></span>
+          <span class="wavelength__bar"></span>
+          <span class="wavelength__bar"></span>
+        </div>
+      </button>
       
 
       <!-- Dark/Light theme toggle -->
@@ -243,23 +253,23 @@
             </article>
           
             <article class="blog-card blog-card--span-4">
-              <a href="/blog/mastering-portfolio-as-code-configuration-guide/" class="blog-card__link">
-                <div class="blog-card__content interactive-glow">
-                  <div class="blog-card__image-wrap">
-                    <img src="/assets/img/theprofile.png" alt="The Master Guide to Portfolio-as-Code Configuration" class="blog-card__image" loading="lazy">
-                  </div>
-                  <h4 class="blog-card__title">The Master Guide to Portfolio-as-Code Configuration</h4>
-                </div>
-              </a>
-            </article>
-          
-            <article class="blog-card blog-card--span-4">
               <a href="/blog/introducing-theprofile/" class="blog-card__link">
                 <div class="blog-card__content interactive-glow">
                   <div class="blog-card__image-wrap">
                     <img src="/assets/img/theprofile.png" alt="TheProFile: The Portfolio-as-Code Revolution" class="blog-card__image" loading="lazy">
                   </div>
                   <h4 class="blog-card__title">TheProFile: The Portfolio-as-Code Revolution</h4>
+                </div>
+              </a>
+            </article>
+          
+            <article class="blog-card blog-card--span-4">
+              <a href="/blog/foundational-design/" class="blog-card__link">
+                <div class="blog-card__content interactive-glow">
+                  <div class="blog-card__image-wrap">
+                    <img src="https://www.jainuniversity.ac.in/uploads/blog/UI_and_UX_Design.webp" alt="Foundational Design: Architecting for 2026" class="blog-card__image" loading="lazy">
+                  </div>
+                  <h4 class="blog-card__title">Foundational Design: Architecting for 2026</h4>
                 </div>
               </a>
             </article>
@@ -327,9 +337,6 @@
 
     <!-- Custom Cursor Markup -->
     
-      <div class="cursor-dot"></div>
-      <div class="cursor-outline"></div>
-    
 
     <!-- Initialization of Cinematic Effects -->
     
@@ -351,12 +358,12 @@
 
 
 <!-- Dependency: Initial Vanta Effect Script -->
-<script defer src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 
 <!-- Pass Liquid Configuration to the Vanta Controller -->
 <script>
   window.THE_PROFILE_CONFIG = Object.assign(window.THE_PROFILE_CONFIG || {}, {
-    vantaEffect: 'birds',
+    vantaEffect: 'net',
     accentColor: '#58a6ff',
     primaryColor: '#0d1117',
     lightBg: '#f0f4f8'
@@ -376,6 +383,18 @@
 -->
 
 
+  <audio 
+    id="bg-music" 
+    loop 
+    preload="auto" 
+    data-max-volume="1.0"
+  >
+    <source src="/assets/music/interstellar.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Controller Logic -->
+  <script defer src="/assets/js/audio-controller.js"></script>
+
 
 
     <!-- Core Interactions & Animations (Deferred) -->
@@ -385,8 +404,6 @@
     <script defer src="/assets/js/smooth-scroll.js"></script>
     <script defer src="/assets/js/gsap-animations.js"></script>
     <script defer src="/assets/js/contact-scripts.js"></script>
-    
-      <script src="/assets/js/cursor-controller.js" defer></script>
     
   </body>
 </html>
