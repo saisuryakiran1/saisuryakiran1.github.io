@@ -1,7 +1,7 @@
 {
   "theme_config": {
     "mode": "dark",
-    "vanta_effect": "halo",
+    "vanta_effect": "birds",
     "vanta_magic": true,
     "colors": {
       "primary": "#0d1117",
